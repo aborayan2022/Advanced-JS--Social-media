@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>postDetails</title>
+    <!-- تضمين Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- تضمين Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="node_modules/axios/dist/axios.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+    <style>
+        body {
+            background-color: #f0ecff;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <!-- ======ALERT======= -->
+    <div id="success-alert" class="show fade"
+        style="position: fixed; z-index: 99999; width: 30%;  top: 70px; right: 10px; "></div>
+    <!-- //ALERT//  -->
+    <!-- ======MODALS====== -->
+    <!-- LOGIN  -->
+    <div class="modal fade" id="login-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Login</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">User Name:</label>
+                            <input type="text" class="form-control" id="userName-input" value="ahmedbakr" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="message-text" class="col-form-label">Password</label>
+                            <input type="password" class="form-control" id="password-input" value="010277" />
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="button" class="btn btn-primary" onclick="loginButClicked()">
+                        login
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--//LOGIN//-->
+    <!-- Register -->
+    <div class="modal fade" id="register-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Register A New User</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="message-text" class="col-form-label">Profile Image</label>
+                            <input type="file" class="form-control" id="register-proImg-input" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Name:</label>
+                            <input type="text" class="form-control" id="register-name-input" value="" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">User Name:</label>
+                            <input type="text" class="form-control" id="register-userName-input" value="" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="message-text" class="col-form-label">Password</label>
+                            <input type="password" class="form-control" id="register-password-input" value="" />
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="button" class="btn btn-primary" onclick="registerButClicked()">
+                        Register
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //Register// -->
+    <!-- Nav Bar Container -->
+    <div class="container">
+        <div class="d-flex justify-content-center">
+            <div class="col-9">
+                <nav class="navbar navbar-expand-lg bg-body-tertiary shadow rounded pt-2">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="index.html">FacBook</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarScroll">
+                            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
+                                style="--bs-scroll-height: 100px">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" onclick="profileClicked()" href="#">Profile</a>
+                                </li>
+                            </ul>
+
+                            <div class="d-flex  w-100 justify-content-end align-items-center " id="logout-Div">
+                                <img id="nav-user-image" class="rounded-circle "
+                                    style="height: 50px; width: 50px;margin-right: 10px;" src="img/photo_profil/1.png"
+                                    alt="" srcset="">
+                                <b id="nav-username">
+                                    @AhmedBark
+                                </b>
+                                <button onclick="logOut()" id="logout-btn" type="button"
+                                    class="btn btn-outline-success mx-2">
+                                    Logout
+                                </button>
+                            </div>
+                            <div class="d-flex  w-100 justify-content-end" id="logged-in-div">
+                                <button id="login-btn" type="button" class="btn btn-outline-success mx-2"
+                                    data-bs-toggle="modal" data-bs-target="#login-modal">
+                                    Login
+                                </button>
+                                <button id="register-btn" type="button" class="btn btn-outline-success"
+                                    data-bs-toggle="modal" data-bs-target="#register-modal">
+                                    Register
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- //Nav Bar Container// -->
+    <!-- Main Content -->
+    <div class="container">
+        <!-- USERS POST -->
+        <div class="row d-flex justify-content-center mt-5 ">
+            <div class="col-lg-9 ">
+                <h1>
+                    <span id="user-name-span">
+                        AhmedBark
+                    </span>
+                    Post
+                </h1>
+            </div>
+        </div>
+        <!-- //USERS POST// -->
+        <!-- POST ROW -->
+        <div class="row d-flex justify-content-center mt-5 ">
+            <!-- //POST //-->
+            <div class="col-lg-9 " id="post">
+                
+            </div>
+            <!-- //POST //-->
+        </div>
+        <!-- //POST ROW// -->
+        <!-- //Main Content //-->
+    </div>
+    <script  src="js/postDetails.js"></script>
+    s
+</body>
+
+</html>
