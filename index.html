@@ -11,152 +11,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- تضمين Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/fabric-icons.css">
+    <link rel="stylesheet" href="css/purple.css">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="slidr/sidebars.css">
-    <style>
-        body {
-            background-color: #f0ecff;
-        }
-
-        #add-but {
-            position: fixed;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            color: #eee;
-            font-size: 32px;
-            bottom: 58px;
-            right: 150px;
-            font-weight: 600;
-            z-index: 999999;
-            box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        #post-body-input {
-            width: 100%;
-            height: 100px;
-            border-color: gray;
-            border-radius: 10px;
-            resize: none;
-        }
-
-        /* ============== LOADER STYLES ============== */
-        .lds-roller {
-            display: inline-block;
-            position: relative;
-            width: 80px;
-            height: 80px;
-            z-index: 999999;
-        }
-
-        .lds-roller div {
-            animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-            transform-origin: 40px 40px;
-        }
-
-        .lds-roller div:after {
-            content: " ";
-            display: block;
-            position: absolute;
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: #f30404;
-            margin: -4px 0 0 -4px;
-        }
-
-        .lds-roller div:nth-child(1) {
-            animation-delay: -0.036s;
-        }
-
-        .lds-roller div:nth-child(1):after {
-            top: 63px;
-            left: 63px;
-        }
-
-        .lds-roller div:nth-child(2) {
-            animation-delay: -0.072s;
-        }
-
-        .lds-roller div:nth-child(2):after {
-            top: 68px;
-            left: 56px;
-        }
-
-        .lds-roller div:nth-child(3) {
-            animation-delay: -0.108s;
-        }
-
-        .lds-roller div:nth-child(3):after {
-            top: 71px;
-            left: 48px;
-        }
-
-        .lds-roller div:nth-child(4) {
-            animation-delay: -0.144s;
-        }
-
-        .lds-roller div:nth-child(4):after {
-            top: 72px;
-            left: 40px;
-        }
-
-        .lds-roller div:nth-child(5) {
-            animation-delay: -0.18s;
-        }
-
-        .lds-roller div:nth-child(5):after {
-            top: 71px;
-            left: 32px;
-        }
-
-        .lds-roller div:nth-child(6) {
-            animation-delay: -0.216s;
-        }
-
-        .lds-roller div:nth-child(6):after {
-            top: 68px;
-            left: 24px;
-        }
-
-        .lds-roller div:nth-child(7) {
-            animation-delay: -0.252s;
-        }
-
-        .lds-roller div:nth-child(7):after {
-            top: 63px;
-            left: 17px;
-        }
-
-        .lds-roller div:nth-child(8) {
-            animation-delay: -0.288s;
-        }
-
-        .lds-roller div:nth-child(8):after {
-            top: 56px;
-            left: 12px;
-        }
-
-        @keyframes lds-roller {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* ============== //LOADER STYLES// ============== */
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
-<bod class="bg-light">
+<body style="background-color: #eff2f6;">
     <!-- ======= LOADER ======= -->
     <div id="loader"
         class="lds-roller position-fixed top-50 start-50 translate-middle bg-opacity-50 rounded-circle z-index-999999 ">
@@ -170,11 +32,7 @@
         <div></div>
     </div>
     <!-- ======= ///LOADER ///======= -->
-    <!-- ADD POSTS ICON -->
-    <div class="bg-primary" id="add-but" onclick="addBtnClicked()">
-        +
-    </div>
-    <!-- ///ADD POSTS ICON/// -->
+
     <!-- CREATE POST MODAL -->
     <div class="modal fade" id="create-post-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -322,9 +180,9 @@
     <div class="container-fluid p-0">
         <div class="d-flex justify-content-center ">
             <div class="w-100  ">
-                <nav class="navbar navbar-expand-lg bg-body-tertiary shadow rounded pt-2">
+                <nav class="navbar navbar-expand-lg  bg-light-subtle  shadow rounded pt-2">
                     <div class="container-fluid ">
-                        <a class="navbar-brand" href="index.html">FacBook</a>
+                        <a class="navbar-brand fs-3 px-5" href="index.html">FaceBook</a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false"
                             aria-label="Toggle navigation">
@@ -333,26 +191,14 @@
                         <div class="collapse navbar-collapse" id="navbarScroll">
                             <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
                                 style="--bs-scroll-height: 100px">
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" onclick="profileClicked()" href="#">Profile</a>
-                                </li>
                             </ul>
-                            <div class="d-flex  w-100 justify-content-end align-items-center " id="logout-Div">
-                                <img id="nav-user-image" class="rounded-circle "
-                                    style="height: 50px; width: 50px;margin-right: 10px;" src="img/photo_profil/1.png"
-                                    alt="" srcset="">
-                                <b id="nav-username">
-                                    @AhmedBark
-                                </b>
+                            <!-- <div class="d-flex  w-100 justify-content-end align-items-center">
                                 <button onclick="logOut()" id="logout-btn" type="button"
                                     class="btn btn-outline-success mx-2">
                                     Logout
                                 </button>
-                            </div>
-                            <div class="d-flex  w-100 justify-content-end" id="logged-in-div">
+                            </div> -->
+                            <!-- <div class="d-flex  w-100 justify-content-end" id="logged-in-div">
                                 <button id="login-btn" type="button" class="btn btn-outline-success mx-2"
                                     data-bs-toggle="modal" data-bs-target="#login-modal">
                                     Login
@@ -361,7 +207,7 @@
                                     data-bs-toggle="modal" data-bs-target="#register-modal">
                                     Register
                                 </button>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </nav>
@@ -449,20 +295,23 @@
         </symbol>
     </svg>
     <!-- //Sidebar SVG// -->
-    <!-- Sidebar Start -->
+    <!-- Sidenav START -->
     <div class="container">
-        <main class="d-flex flex-nowrap py-5 max-vh-100  bg-light   position-fixed top-0  start-0   ">
-            <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 350px;">
-                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-                    <svg class="bi pe-none me-2" width="40" height="32">
-                        <use xlink:href="#bootstrap" />
-                    </svg>
-                    <span class="fs-4">Sidebar</span>
-                </a>
+        <main class=" py-5  overflow-auto   position-fixed top-0  start-0 "
+            style="width: 250px; height: 100vh; margin: auto; margin-top: 30px;">
+            <div class="d-flex flex-column flex-shrink-0 p-3 text-white  ">
+                <div class="  w-100 d-flex  align-items-center " id="logout-nav-Div">
+                    <img id="nav-user-image" class="rounded-circle "
+                        style="height: 70px; width: 70px;margin-right: 10px;" src="img/photo_profil/1.png" alt=""
+                        srcset="">
+                    <span id="nav-username" class="text-black fw-bold p-1 fs-4  ">
+                        AhmedBark
+                    </span>
+                </div>
                 <hr class="bg-secondary">
                 <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
-                        <a href="#" class="nav-link active" aria-current="page">
+                        <a href="index.html" class="nav-link active" aria-current="page">
                             <svg class="bi pe-none me-2" width="16" height="16">
                                 <use xlink:href="#home" />
                             </svg>
@@ -470,23 +319,25 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link link-dark">
+                        <a href="#" class="nav-link link-dark" onclick="profileClicked()">
                             <svg class="bi pe-none me-2" width="16" height="16">
                                 <use xlink:href="#people-circle" />
                             </svg>
                             Profile
                         </a>
                     </li>
+                    <!-- ADD POSTS ICON -->
                     <li>
-                        <a href="#" class="nav-link link-dark">
+                        <a href="#" class="nav-link link-dark" id="add-but" onclick="addBtnClicked()">
                             <svg class="bi pe-none me-2" width="16" height="16">
                                 <use xlink:href="#table" />
                             </svg>
                             New Post
                         </a>
                     </li>
+                    <!-- ///ADD POSTS ICON/// -->
                     <li>
-                        <a href="#" class="nav-link link-dark">
+                        <a href="my_friends.html" class="nav-link link-dark">
                             <svg class="bi pe-none me-2" width="16" height="16">
                                 <use xlink:href="#grid" />
                             </svg>
@@ -494,27 +345,27 @@
                         </a>
                     </li>
                 </ul>
-                <!-- <hr>
-                <div class="dropdown">
-                    <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-                        <strong>mdo</strong>
-                    </a>
-                    <ul class="dropdown-menu text-small shadow">
-                        <li><a class="dropdown-item" href="#">New project...</a></li>
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Sign out</a></li>
-                    </ul> -->
+                <hr>
+                <div class="add-but2 position-fixed bottom-0" id="logout-Div">
+                    <button onclick="logOut()" id="logout-btn" type="button" 
+                    class="btn btn-outline-primary mx-2">
+                        Logout
+                    </button>
+                </div>
+                <div class="d-flex  w-100 position-fixed bottom-0 " id="logged-in-div" style="margin-top: 250px;">
+                    <button id="login-btn" type="button" class="btn btn-outline-primary  mx-2" data-bs-toggle="modal"
+                        data-bs-target="#login-modal">
+                        Login
+                    </button>
+                    <button id="register-btn" type="button" class="btn btn-outline-primary " data-bs-toggle="modal"
+                        data-bs-target="#register-modal">
+                        Register
+                    </button>
+                </div>
             </div>
+        </main>
     </div>
-    </main>
-    </div>
-    <!-- //SIDEBAR END// -->
+    <!-- Sidenav END -->
     <!-- POSTS CONTAINER -->
     <div class="container">
         <div class="d-flex justify-content-center mt-5">
@@ -568,6 +419,6 @@
     <script src="js/min.js"></script>
     <script src="slidr/sidebars.js"></script>
 
-    </body>
+</body>
 
 </html>

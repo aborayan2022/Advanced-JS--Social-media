@@ -2,6 +2,7 @@ const baseUrl = 'https://tarmeezacademy.com/api/v1'
 let currentPage = 1
 let lastPage = 1
 setupUI()
+getPosts()
 window.addEventListener("scroll", function () {
     const endOfPage = window.innerHeight + window.pageYOffset >= document.body.scrollHeight;
     if (endOfPage && currentPage < lastPage) {
@@ -15,11 +16,11 @@ function userClicked(userId) {
     window.location = `profile.html?userid=${userId}`
 }
 
-getPosts();
+
 function getPosts(reload = true, page = 1) {
-            toggleLoader(true)
-    axios.get(`${baseUrl}/posts?limit=5&page=${page}`)
-        .then(function (response) {
+    toggleLoader(true)
+    axios.get(`${baseUrl}/posts?limit=15&page=${page}`)
+        .then((response) => {
             toggleLoader(false)
             const posts = response.data.data;
             lastPage = response.data.meta.last_page
@@ -27,8 +28,7 @@ function getPosts(reload = true, page = 1) {
                 document.getElementById("posts").innerHTML = ""
             }
             for (let post of posts) {
-                const author = post.author;
-                let postTitle = "";
+
 
                 // Show or Hide (edit) Button
                 let user = getCurrentUser()
@@ -42,6 +42,8 @@ function getPosts(reload = true, page = 1) {
                         <button class="btn btn-primary float-end my-2 " onclick="editPostBtnClicked('${encodeURIComponent(JSON.stringify(post))}')">Edit</button>
                         `
                 }
+                const author = post.author;
+                let postTitle = "";
                 if (post.title != null) {
                     postTitle = post.title;
                 }
@@ -249,7 +251,7 @@ function addBtnClicked() {
 }
 
 
-(postObject) => {
+function editPostBtnClicked(postObject) {
     let post = JSON.parse(decodeURIComponent(postObject));
 
     document.getElementById("post-modal-submit-btn").innerHTML = "Update";
@@ -320,6 +322,7 @@ function setupUI() {
     const loggedInDiv = document.getElementById("logged-in-div");
     const logoutBtn = document.getElementById("logout-Div");
     const addBut = document.getElementById("add-but");
+    const logoutSlide = document.getElementById("logout-nav-Div");
 
     // Check if the script is on the main page
     const isMainPage = window.location.pathname === "/js/min.js" || window.location.pathname === "/index.html"; // Adjust the path accordingly
@@ -328,6 +331,7 @@ function setupUI() {
         // user is guest (not logged in) or not on the main page
         loggedInDiv.style.setProperty("display", "flex", "important");
         logoutBtn.style.setProperty("display", "none", "important");
+        logoutSlide.style.setProperty("display", "none", "important");
         if (addBut) {
             addBut.style.setProperty("display", "none", "important");
         }
@@ -335,6 +339,7 @@ function setupUI() {
         // for logged in user on the main page
         loggedInDiv.style.setProperty("display", "none", "important");
         logoutBtn.style.setProperty("display", "flex", "important");
+        logoutSlide.style.setProperty("display", "flex", "important");
         if (addBut) {
             addBut.style.setProperty("display", "flex", "important");
         }
